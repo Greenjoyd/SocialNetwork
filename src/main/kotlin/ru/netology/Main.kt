@@ -1,20 +1,6 @@
 package ru.netology
 
-data class Post(
-    var id: Int=0,
-    val ownerId: Int = 112,
-    val fromId: Int = 113,
-    val date: Int = 19_01_2023,
 
-
-    val text: String = "",
-    val postType: String = "",
-
-    val markedAsAds: Boolean = false,
-    val canDelete: Boolean = false,
-    val canEdit: Boolean = true,
-    val canPin: Boolean = true,
-)
 
 object WallService {
     private var lastId = 0
@@ -46,10 +32,13 @@ object WallService {
 }
 
 fun main(){
-    val post1 = Post(id = 1)
-    val post2 = Post(id = 2)
+    val likesCount = Likes()
+    val isDonut = Donut()
+    val viewsCount = Views()
+    val post1 = Post(id =1,likes = likesCount, donut = isDonut, views = viewsCount)
+    val post2 = Post(id = 2,likes = likesCount, donut = isDonut, views = viewsCount)
     WallService.add(post1)
     WallService.add(post2)
     WallService.printAll()
-    WallService.update(Post(id=2))
+    WallService.update(Post(id=2, likes = likesCount, donut = isDonut, views = viewsCount))
 }

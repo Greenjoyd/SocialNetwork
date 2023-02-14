@@ -8,7 +8,10 @@ class WallServiceTest {
 
     @Test
     fun add() {
-        val post = Post()
+        val likesCount = Likes()
+        val isDonut = Donut()
+        val viewsCount = Views()
+        val post = Post(likes = likesCount, donut = isDonut, views = viewsCount)
         WallService.add(post)
         val result = post.id
         assertEquals(1,result)
@@ -16,14 +19,20 @@ class WallServiceTest {
 
     @Test
     fun update(){
-        val post = Post(id=0)
+        val likesCount = Likes()
+        val isDonut = Donut()
+        val viewsCount = Views()
+        val post = Post(likes = likesCount, donut = isDonut, views = viewsCount)
         WallService.update(post)
         val result = WallService.update(post)
         assertEquals(false,result)
     }
     @Test
     fun addUpdate(){
-        val post = Post(id=0)
+        val likesCount = Likes()
+        val isDonut = Donut()
+        val viewsCount = Views()
+        val post = Post(likes = likesCount, donut = isDonut, views = viewsCount)
         WallService.add(post)
         val result = (WallService.update(post))
         assertEquals(true,result)
